@@ -43,7 +43,7 @@ EOF
     local T=$(gettop)
     local A=""
     local i
-    for i in `cat $T/build/envsetup.sh $T/vendor/rr/build/envsetup.sh | sed -n "/^[[:blank:]]*function /s/function \([a-z_]*\).*/\1/p" | sort | uniq`; do
+    for i in `cat $T/build/envsetup.sh $T/vendor/renouveau/build/envsetup.sh | sed -n "/^[[:blank:]]*function /s/function \([a-z_]*\).*/\1/p" | sort | uniq`; do
       A="$A $i"
     done
     echo $A
@@ -54,8 +54,8 @@ function build_build_var_cache()
 {
     local T=$(gettop)
     # Grep out the variable names from the script.
-    cached_vars=`cat $T/build/envsetup.sh $T/vendor/rr/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`
-    cached_abs_vars=`cat $T/build/envsetup.sh $T/vendor/rr/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_abs_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`
+    cached_vars=`cat $T/build/envsetup.sh $T/vendor/renouveau/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`
+    cached_abs_vars=`cat $T/build/envsetup.sh $T/vendor/renouveau/build/envsetup.sh | tr '()' '  ' | awk '{for(i=1;i<=NF;i++) if($i~/get_abs_build_var/) print $(i+1)}' | sort -u | tr '\n' ' '`
     # Call the build system to dump the "<val>=<value>" pairs as a shell script.
     build_dicts_script=`\builtin cd $T; build/soong/soong_ui.bash --dumpvars-mode \
                         --vars="$cached_vars" \
@@ -636,13 +636,13 @@ function lunch()
         # if we can't find a product, try to grab it off the LineageOS GitHub
         T=$(gettop)
         cd $T > /dev/null
-        vendor/rr/build/tools/roomservice.py $product
+        vendor/renouveau/build/tools/roomservice.py $product
         cd - > /dev/null
         check_product $product
     else
         T=$(gettop)
         cd $T > /dev/null
-        vendor/rr/build/tools/roomservice.py $product true
+        vendor/renouveau/build/tools/roomservice.py $product true
         cd - > /dev/null
     fi
 
@@ -1721,5 +1721,5 @@ addcompletions
 
 export ANDROID_BUILD_TOP=$(gettop)
 
-. $ANDROID_BUILD_TOP/vendor/rr/tools/rr_variant.sh && ./vendor/rr/tools/changelog.sh && . vendor/rr/build/envsetup.sh
+. $ANDROID_BUILD_TOP/vendor/renouveau/tools/renouveau_variant.sh && ./vendor/renouveau/tools/changelog.sh && . vendor/renouveau/build/envsetup.sh
 
