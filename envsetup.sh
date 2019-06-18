@@ -137,12 +137,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^rr_") ; then
-        RR_BUILD=$(echo -n $1 | sed -e 's/^rr_//g')
+    if (echo -n $1 | grep -q -e "^renouveau_") ; then
+        RENOUVEAU_BUILD=$(echo -n $1 | sed -e 's/^renouveau_//g')
     else
-        RR_BUILD=
+        RENOUVEAU_BUILD=
     fi
-    export RR_BUILD
+    export RENOUVEAU_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
