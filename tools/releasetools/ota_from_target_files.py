@@ -848,39 +848,17 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   system_progress = 0.75
 
-#  script.Print("");
-#  script.Print(" RRRRRRRRRRRRRRRRR     RRRRRRRRRRRRRRRRR   ")
-#  script.Print(" R::::::::::::::::R    R::::::::::::::::R  ")
-#  script.Print(" R::::::RRRRRR:::::R   R::::::RRRRRR:::::R ")
-#  script.Print(" RR:::::R     R:::::R  RR:::::R     R:::::R")
-#  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-#  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-#  script.Print("   R::::RRRRRR:::::R     R::::RRRRRR:::::R ")
-#  script.Print("   R:::::::::::::RR      R:::::::::::::RR  ")
-#  script.Print("   R::::RRRRRR:::::R     R::::RRRRRR:::::R ")
-#  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-#  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-#  script.Print("   R::::R     R:::::R    R::::R     R:::::R")
-#  script.Print(" RR:::::R     R:::::R  RR:::::R     R:::::R")
-#  script.Print(" R::::::R     R:::::R  R::::::R     R:::::R")
-#  script.Print(" R::::::R     R:::::R  R::::::R     R:::::R")
-#  script.Print(" RRRRRRRR     RRRRRRR  RRRRRRRR     RRRRRRR")
-#  script.Print("");
-
   script.Print("");
   script.Print("Welcome to Renouveau!");
   script.Print("");
 
   build = target_info.GetBuildProp("ro.build.date")
-#  buildid = target_info.GetBuildProp("ro.rr.version")
   buildid = target_info.GetBuildProp("ro.renouveau.version")
-#  buildtype = target_info.GetBuildProp("ro.rr.releasetype")
   buildtype = target_info.GetBuildProp("ro.renouveau.releasetype")
   buildidn = target_info.GetBuildProp("ro.build.id")
   buildday = target_info.GetBuildProp("ro.build.date")
   securep = target_info.GetBuildProp("ro.build.version.security_patch")
   buildhst = target_info.GetBuildProp("ro.build.host")
-#  device = target_info.GetBuildProp("ro.rr.device")
   device = target_info.GetBuildProp("ro.renouveau.device")
   androidver = target_info.GetBuildProp("ro.build.version.release")
   manufacturer = target_info.GetBuildProp("ro.product.manufacturer")
@@ -888,15 +866,15 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   sdkver = target_info.GetBuildProp("ro.build.version.sdk")
 
   script.Print(" **************** Information *****************");
-  script.Print(" OS ver: %s"%(buildid));
+  script.Print(" OTA version: %s"%(buildid));
   script.Print("");
-  script.Print(" Android ver: %s"%(androidver));
+  script.Print(" Android version: %s"%(androidver));
   script.Print("");
   script.Print(" Security patch: %s"%(securep));
   script.Print("");
-  script.Print(" SDK ver: %s"%(sdkver));
+  script.Print(" SDK version: %s"%(sdkver));
   script.Print("");
-  script.Print(" Build ID: %s"%(buildidn));
+  script.Print(" Build: %s"%(buildidn));
   script.Print("");
   script.Print(" Build date: %s"%(buildday));
   script.Print("");
@@ -910,7 +888,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("");
   script.Print(" Manufacturer: %s"%(manufacturer));
   script.Print("");
-  script.Print(" *******************************************");
+  script.Print(" **********************************************");
 
   if OPTIONS.wipe_user_data:
     system_progress -= 0.1
