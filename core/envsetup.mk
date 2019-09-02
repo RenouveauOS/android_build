@@ -116,7 +116,9 @@ endif
 
 HOST_OS_EXTRA := $(shell uname -rsm)
 ifeq ($(HOST_OS),linux)
-  ifneq ($(wildcard /etc/os-release),)
+  ifneq ($(wildcard /bedrock/etc/os-release),)
+    HOST_OS_EXTRA += $(shell source /bedrock/etc/os-release; echo $$PRETTY_NAME)
+  else ifneq ($(wildcard /etc/os-release),)
     HOST_OS_EXTRA += $(shell source /etc/os-release; echo $$PRETTY_NAME)
   endif
 else ifeq ($(HOST_OS),darwin)
